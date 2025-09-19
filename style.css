@@ -80,13 +80,6 @@ cursor:pointer;
   justify-content: space-between;
 }
 
-.build{
-  border:1px solid red;
- 
-  border-radius: 38px;
-  margin:40px 10%;
-  font-size: 20px;
-}
 .design{
   border:1px solid red;
   border-radius: 38px;

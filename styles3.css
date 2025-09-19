@@ -1,0 +1,126 @@
+/* --- General Body and Font Styles --- */
+body {
+    /* A clean, modern background */
+    background-color: #f4f7f9;
+    font-family: system-ui, sans-serif; /* A professional font */
+    color: #333;
+    margin: 0;
+    padding: 2rem;
+}
+
+
+
+.design,.engine{
+      width:350px;
+
+box-shadow: 0px 0px 10px green;
+font-size:18px;
+font-style:system-ui, sans-serif;
+color:#3173B9;
+font-style: italic;
+transition:  transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+padding:20px;
+}
+
+
+.design img{
+    width:100%;
+}
+
+.engine img{
+    width:100%;
+}
+
+.car-div{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10%;
+    margin-top:5%;
+}
+
+.design:hover{
+    transform: translateY(-10px);
+       box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);    
+}
+
+.engine:hover{
+    transform: translateY(-10px);
+       box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);    
+}
+
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+
+/* --- Main Quiz Container --- */
+.quiz-container {
+    max-width: 700px;
+    margin: 0 auto; /* Centers the container */
+    height:auto;
+}
+
+/* --- Styling for Each Question Block --- */
+.question-block {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0, 0.08);
+    margin-bottom: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 3%;;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #3173B9; /* Blue color for the question */
+}
+
+/* --- Styling for the Radio Button Options --- */
+
+.option {
+    display: block;
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    transition: all 0.2s ease;
+}
+
+.option:hover {
+    border-color: #4A90E2;
+}
+
+/* Add a checkmark and better styling when selected */
+.option input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #4A90E2;
+}
+
+.option input[type="radio"] {
+    margin-right: 10px;
+}
+
+#result-container {
+    background: #e6f2ff;
+    border-left: 5px solid #4A90E2;
+}
+#result-container h2 {
+    color: #3173B9;
+}

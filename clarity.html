@@ -4,10 +4,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-compatible" content="IE=edge">
     <title>Student Advicer</title>
-
+   <link href="styles3.css" rel="stylesheet">
 <body>
 
+   <h1>Your Journey Starts Here</h1>
+   <p class="subtitle">Let's find the perfect starting point for your coding career.</p>
+
+<div class="car-div">
+
+<div class="design">
+    <img src="design.png">
+</div>
+
+<div class="engine">
+    <img src="engine.png">
+</div>
+
+</div>
+
+<!-- end of the images-->
+
+<div class="quiz-container"></div>
+
+<div id="car-analogy" class="question-block" >
+    <h2 class="question-text" >When something is broken, what kind of problem are you more interested in solving?</h2>
+
+    <div class="options-container" >
+        <div class="option" onclick="handleChoice(1 , 'backend')">
+        <input type="radio" name="interest" value="Backend">
+        <label for="frontend">Designing the Interior: I want to work on the dashboard, the steering wheel, the sound system, and the seats. My job is to make the driver's experience comfortable, intuitive, and beautiful. </label>
+    </div>
+
+    <div class="option" onclick="handleChoice(1,'frontend')">
+        <input type="radio" name="interest" value="Frontend">
+        <label for="backend">Building the Engine: I want to work on the engine, the transmission, and the computer systems that manage fuel and power. My job is to make the car powerful, efficient, and reliable.</label>
+    </div>
+
+  <div class="option" onclick="handleChoice(1,'frontend')">
+        <input type="radio" name="interest" value="Frontend">
+        <label for="apps">I want to create an application that people can download and use on their phones.</label>
+  </div>
 
 
+
+    </div>
+
+</div>  <!-- this is end of car-analogy -->
+
+
+<div id="interior-analogy" class="question-block" hidden >
+    <h2 class="question-text" >When something is broken, what kind of problem are you more interested in solving?</h2>
+
+    <div class="options-container" >
+
+        <div class="option" onclick="handleChoice(2,'frontend')">
+        <input type="radio" name="interest" value="Frontend">
+        <label for="frontend">The Visible Problem: "This button looks wrong on a mobile phone," or "The animation feels clunky and slow." I enjoy fixing things the user can see and interact with.</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(2, 'backend')">
+        <input type="radio" name="interest" value="Backend">
+        <label for="backend">The Hidden Problem: "The website is slow because the database query is inefficient," or "There's a security flaw in how we handle user logins." I enjoy solving complex, logical puzzles behind the scenes.</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(2, 'backend')">
+        <input type="radio" name="interest" value="Backend">
+        <label for="apps">The underrated problem:</label>
+        </div>
+
+    </div>
+</div>  <!-- this is end of interior-analogy-->
+
+
+
+
+
+<!-- Step 1: Always Visible -->
+<div id="step1" class="question-block"  hidden>
+    <h2 class="question-text" >What excites you the most?</h2>
+
+    <div class="options-container" >
+
+        <div class="option" onclick="handleChoice(3,'frontend')">
+        <input type="radio" name="interest" value="Frontend">
+        <label for="frontend">Building beautiful and interactive websites</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(3, 'backend')">
+        <input type="radio" name="interest" value="Backend">
+        <label for="backend">Powering the 'brains' of an application and working with data</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(3, 'mobile')">
+        <input type="radio" name="interest" value="Mobile App Development">
+        <label for="mobile">Creating the next great phone app</label>
+        </div>
+
+
+    </div>
+
+</div>  <!-- this is end of step1-->
+  
+
+
+<!-- Step 2 FOR FRONTEND (Initially Hidden) -->
+
+ <div id="question-frontend" class="question-block" hidden>
+    <h2 class="question-text">Do you enjoy designing visual layouts...?</h2>
+    <div class="options-container">
+        <!-- Options for UI/UX vs. Dev -->
+
+        <div class="option" onclick="handleChoice(4, 'uiux')">
+            <input type="radio" name="interest2-frontend">
+            <label>I love designing the look and feel.</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(4, 'frontend-dev')">
+            <input type="radio" name="interest2-frontend">
+            <label>I love making things interactive.</label>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Step 2 FOR BACKEND (Initially Hidden) -->
+
+<div id="question-backend" class="question-block" hidden>
+    <h2 class="question-text">Do you prefer rock-solid systems...?</h2>
+    <div class="options-container">
+        <!-- Options for Enterprise vs. Modern -->
+
+        <div class="option" onclick="handleChoice(4, 'enterprise')">
+                <input type="radio" name="interest2-backend">
+                <label>Rock-solid systems for big companies.</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(4, 'modern-backend')">
+        <input type="radio" name="interest2-backend">
+        <label>Fast, modern apps and APIs.</label>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Step 2 FOR MOBILE Apps (Initially Hidden) -->
+
+<div id="question-mobile" class="question-block" hidden>
+    <h2 class="question-text">Do you want to build for one brand...?</h2>
+    <div class="options-container">
+        <!-- Options for iOS, Android, Cross-platform -->
+
+        <div class="option" onclick="handleChoice(4, 'ios')">
+        <input type="radio" name="interest2-mobile">
+        <label>Just for iPhones.</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(4, 'android')">
+        <input type="radio" name="interest2-mobile">
+        <label>Just for Android phones.</label>
+        </div>
+
+        <div class="option" onclick="handleChoice(4, 'cross-platform')">
+        <input type="radio" name="interest2-mobile">
+        <label>I want to build for both at the same time.</label>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<!-- The Final Result Block (Initially Hidden) -->
+        <div id="result-container" class="question-block" hidden>
+        <h2 id="result-title"></h2>
+        <p id="result-description"></p>
+        </div>
+
+
+</div>  <!-- quiz container-->
+
+<script src="clarity.js"></script>
 </body>
 </html>

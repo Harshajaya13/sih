@@ -32,7 +32,10 @@ row-gap: 20%;
     background-clip: content-box, border-box;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
+.mpc a{
+    color:#3173B9;
+}
+    
 .mpc:hover{
       transform: translateY(-10px);
        box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);

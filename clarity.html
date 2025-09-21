@@ -11,120 +11,90 @@
     <h1>Your Journey Starts Here</h1>
     <p class="subtitle">Let's find the perfect starting point for your coding career.</p>
 
-    <div class="car-div">
-        <div class="design">
-            <img src="design.png">
-        </div>
-        <div class="engine">
-            <img src="engine.png">
+ 
+
+     <div class="main-container">
+        <h1>Your Journey Starts Here</h1>
+        <p class="subtitle">Answer a few questions to find the coding path that truly fits you.</p>
+
+        <div class="quiz-container">
+
+            <!-- Step 1: Foundational Interest -->
+            <div id="step-1" class="question-block">
+                <h2 class="question-text">Let's start with a metaphor. If a product were a restaurant, where would you want to work?</h2>
+                <div class="options-container">
+                    <label class="option">
+                        <input type="radio" name="interest-base" value="frontend">
+                        <span>In the dining room, designing the menu, arranging the decor, and ensuring every customer has a delightful experience. (The part users see and interact with)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="interest-base" value="backend">
+                        <span>In the kitchen, managing the inventory, creating the recipes, and ensuring the complex operations run smoothly and efficiently. (The 'behind-the-scenes' logic)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="interest-base" value="mobile">
+                        <span>I'm not thinking about a restaurant. I want to build a specialized food truck—a self-contained experience people can access anywhere. (A mobile app)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2: Frontend Path -->
+            <div id="path-frontend" class="question-block" hidden>
+                <h2 class="question-text">You chose the user's experience. What part of that excites you more?</h2>
+                <div class="options-container">
+                    <label class="option">
+                        <input type="radio" name="interest-frontend" value="uiux">
+                        <span>The 'Aha!' moment when a user finds something intuitive and beautiful. I enjoy crafting the visual look and feel.</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="interest-frontend" value="frontend-dev">
+                        <span>The magic of making that beautiful design come to life. I enjoy writing the code that makes things interactive and responsive.</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2: Backend Path -->
+            <div id="path-backend" class="question-block" hidden>
+                <h2 class="question-text">You chose the core logic. What kind of system do you want to build?</h2>
+                <div class="options-container">
+                    <label class="option">
+                        <input type="radio" name="interest-backend" value="enterprise">
+                        <span>A fortress. I want to build large-scale, secure, and reliable systems for established industries like finance or healthcare.</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="interest-backend" value="modern-backend">
+                        <span>A race car. I want to build fast, flexible, and scalable services for modern startups and web applications.</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2: Mobile Path -->
+            <div id="path-mobile" class="question-block" hidden>
+                <h2 class="question-text">You chose to build an app. Who is your primary audience?</h2>
+                <div class="options-container">
+                    <label class="option">
+                        <input type="radio" name="interest-mobile" value="ios">
+                        <span>Those who appreciate a polished, premium experience within the Apple ecosystem. (iOS)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="interest-mobile" value="android">
+                        <span>The widest possible global audience on a huge variety of devices. (Android)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="interest-mobile" value="cross-platform">
+                        <span>Everyone. I want to write code once and have it serve both audiences efficiently. (Cross-Platform)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- The Final Result Block -->
+            <div id="result-container" class="question-block result-box" hidden>
+                <h2 id="result-title"></h2>
+                <div id="result-description"></div>
+                <div id="result-roadmap"></div>
+            </div>
         </div>
     </div>
-
-    <div class="quiz-container">
-
-        <!-- Question 1: Car Analogy (Start Here) -->
-        <div id="car-analogy" class="question-block"> 
-
-            <h2 class="question-text">When you think about a car, what part is more interesting to you?</h2>
-        
-            <div class="options-container">
-                <div class="option" onclick="handleChoice(1, 'interior')">
-                    <input type="radio" name="interest-car">
-                    <label>Designing the Interior: I want to work on the dashboard, the steering wheel, and the sound system. My job is to make the driver's experience comfortable and beautiful.</label>
-                </div>
-                <div class="option" onclick="handleChoice(1, 'engine')">
-                    <input type="radio" name="interest-car">
-                    <label>Building the Engine: I want to work on the engine, the transmission, and the computer systems. My job is to make the car powerful, efficient, and reliable.</label>
-                </div>
-                <div class="option" onclick="handleChoice(1, 'apps')">
-                    <input type="radio" name="interest-car">
-                    <label>I'm not thinking about the car, I want to create an application that people can download and use on their phones.</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Question 2: Problem Type Analogy (Initially Hidden) -->
-        <div id="interior-analogy" class="question-block" hidden>
-            <h2 class="question-text">When something is broken, what kind of problem are you more interested in solving?</h2>
-            <div class="options-container">
-                <div class="option" onclick="handleChoice(2, 'frontend')">
-                    <input type="radio" name="interest-problem">
-                    <label>The Visible Problem: "This button looks wrong on a mobile phone," or "The animation feels clunky." I enjoy fixing things the user can see.</label>
-                </div>
-                <div class="option" onclick="handleChoice(2, 'backend')">
-                    <input type="radio" name="interest-problem">
-                    <label>The Hidden Problem: "The website is slow because the database query is inefficient," or "There's a security flaw." I enjoy solving complex, logical puzzles behind the scenes.</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Question 3: Main Interest (Initially Hidden) -->
-        <div id="step1" class="question-block" hidden>
-            <h2 class="question-text">Let's be direct. What excites you the most?</h2>
-            <div class="options-container">
-                <div class="option" onclick="handleChoice(3, 'frontend')">
-                    <input type="radio" name="interest-direct">
-                    <label>Building beautiful and interactive websites.</label>
-                </div>
-                <div class="option" onclick="handleChoice(3, 'backend')">
-                    <input type="radio" name="interest-direct">
-                    <label>Powering the 'brains' of an application and working with data.</label>
-                </div>
-                <div class="option" onclick="handleChoice(3, 'mobile')">
-                    <input type="radio" name="interest-direct">
-                    <label>Creating the next great phone app.</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 4 Questions (All Initially Hidden) -->
-        <div id="question-frontend" class="question-block" hidden>
-            <h2 class="question-text">Do you enjoy designing visual layouts?</h2>
-            <div class="options-container">
-                <div class="option" onclick="handleChoice(4, 'uiux')">
-                    <label><input type="radio" name="interest2-frontend"> I love designing the look and feel.</label>
-                </div>
-                <div class="option" onclick="handleChoice(4, 'frontend-dev')">
-                    <label><input type="radio" name="interest2-frontend"> I love making things interactive with code.</label>
-                </div>
-            </div>
-        </div>
-
-        <div id="question-backend" class="question-block" hidden>
-            <h2 class="question-text">Do you prefer rock-solid systems or fast, modern apps?</h2>
-            <div class="options-container">
-                <div class="option" onclick="handleChoice(4, 'enterprise')">
-                    <label><input type="radio" name="interest2-backend"> Rock-solid systems for big companies.</label>
-                </div>
-                <div class="option" onclick="handleChoice(4, 'modern-backend')">
-                    <label><input type="radio" name="interest2-backend"> Fast, modern apps and APIs.</label>
-                </div>
-            </div>
-        </div>
-
-        <div id="question-mobile" class="question-block" hidden>
-            <h2 class="question-text">Do you want to build for one brand or for everyone?</h2>
-            <div class="options-container">
-                <div class="option" onclick="handleChoice(4, 'ios')">
-                    <label><input type="radio" name="interest2-mobile"> Just for iPhones.</label>
-                </div>
-                <div class="option" onclick="handleChoice(4, 'android')">
-                    <label><input type="radio" name="interest2-mobile"> Just for Android phones.</label>
-                </div>
-                <div class="option" onclick="handleChoice(4, 'cross-platform')">
-                    <label><input type="radio" name="interest2-mobile"> I want to build for both at the same time.</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- The Final Result Block (Initially Hidden) -->
-        <div id="result-container" class="question-block" hidden>
-            <h2 id="result-title"></h2>
-            <p id="result-description"></p>
-        </div>
-       
-    </div>
-
 
 
     <script src="clarity.js"></script>

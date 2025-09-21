@@ -1,14 +1,11 @@
-/* --- General Body and Font Styles --- */
 body {
-    /* A clean, modern background */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f4f7f9;
-    font-family: system-ui, sans-serif; /* A professional font */
     color: #333;
+    line-height: 1.6;
     margin: 0;
-    padding: 2rem;
+    padding: 20px;
 }
-
-
 
 .design,.engine{
       width:350px;
@@ -23,104 +20,85 @@ padding:20px;
 }
 
 
-.design img{
-    width:100%;
+
+.main-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-
-.engine img{
-    width:100%;
-}
-
-.car-div{
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 10%;
-    margin-top:5%;
-}
-
-.design:hover{
-    transform: translateY(-10px);
-       box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);    
-}
-
-.engine:hover{
-    transform: translateY(-10px);
-       box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);    
-}
-
-
 
 h1 {
     text-align: center;
-    margin-bottom: 0.5rem;
+    color: #2c3e50;
 }
 
 .subtitle {
     text-align: center;
-    font-size: 1.2rem;
-    color: #666;
-    margin-top: 0;
-    margin-bottom: 3rem;
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 40px;
 }
 
-/* --- Main Quiz Container --- */
-.quiz-container {
-    max-width: 700px;
-    margin: 0 auto; /* Centers the container */
-    height:auto;
-}
-
-/* --- Styling for Each Question Block --- */
 .question-block {
-    background: white;
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0, 0.08);
-    margin-bottom: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-bottom: 3%;;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eef2f5;
 }
 
 .question-text {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    color: #3173B9; /* Blue color for the question */
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: #34495e;
 }
 
-/* --- Styling for the Radio Button Options --- */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
 .option {
-    display: block;
-    background: #f8f8f8;
-    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: #f8f9fa;
     border-radius: 8px;
-    margin-bottom: 0.75rem;
+    border: 1px solid #e9ecef;
     cursor: pointer;
-    border: 2px solid #ddd;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 .option:hover {
-    border-color: #4A90E2;
-}
-
-/* Add a checkmark and better styling when selected */
-.option input[type="radio"]:checked + label {
-    font-weight: bold;
-    color: #4A90E2;
+    background-color: #e9ecef;
 }
 
 .option input[type="radio"] {
-    margin-right: 10px;
+    margin-top: 4px;
+    margin-right: 15px;
+    flex-shrink: 0;
 }
 
-#result-container {
-    background: #e6f2ff;
-    border-left: 5px solid #4A90E2;
+.result-box {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 8px;
+    padding: 25px;
 }
-#result-container h2 {
-    color: #3173B9;
+
+#result-title {
+    color: #2e7d32;
+}
+
+#result-roadmap a {
+    color: #1565c0;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+#result-roadmap a:hover {
+    text-decoration: underline;
 }

@@ -1,68 +1,119 @@
-/**
- * A helper function to make a question visible and then smoothly scroll down to it.
- * @param {string} elementId The ID of the question block to show.
- */
+document.addEventListener('DOMContentLoaded', () => {
 
-function revealAndScroll(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.hidden = false;
-        // This is the key part: it tells the browser to scroll to the element.
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const paths = {
+        'frontend': 'path-frontend',
+        'backend': 'path-backend',
+        'mobile': 'path-mobile'
+    };
+
+    const results = {
+        'uiux': {
+            title: "Your Path is UI/UX Design",
+            description: "You love crafting beautiful and intuitive user experiences. Your journey starts with understanding user behavior and mastering design tools.",
+            pack: "<strong>Starter Pack:</strong> Figma, HTML, and CSS.",
+            roadmap: `<p><strong>Your Next Steps:</strong></p>
+                      <a href="#">1. Learn Figma Basics & Design Principles</a><br>
+                      <a href="#">2. Create a Project (e.g., redesign a simple app)</a><br>
+                      <a href="#">3. Learn HTML/CSS to understand implementation</a>`
+        },
+        'frontend-dev': {
+            title: "Your Path is Front-End Development",
+            description: "You love bringing designs to life with code. Your journey starts with the core languages of the web.",
+            pack: "<strong>Starter Pack:</strong> HTML, CSS, and JavaScript.",
+            roadmap: `<p><strong>Your Next Steps:</strong></p>
+                      <a href="#">1. Master HTML, CSS, and modern JavaScript (ES6+)</a><br>
+                      <a href="#">2. Build several small, interactive projects</a><br>
+                      <a href="#">3. Learn a framework like React or Vue.js</a>`
+        },
+        'enterprise': {
+            title: "Your Path is Enterprise Back-End",
+            description: "You want to build the robust, secure systems that power big businesses. Your journey starts with powerful, established languages.",
+            pack: "<strong>Starter Pack:</strong> Java or C#.",
+            roadmap: `<p><strong>Your Next Steps:</strong></p>
+                      <a href="#">1. Learn the fundamentals of Java or C#</a><br>
+                      <a href="#">2. Understand databases and SQL</a><br>
+                      <a href="#">3. Explore a framework like Spring (Java) or .NET (C#)</a>`
+        },
+        'modern-backend': {
+            title: "Your Path is Modern Web Back-End",
+            description: "You want to build fast, flexible APIs and services for modern web apps. Your journey starts with today's most popular web technologies.",
+            pack: "<strong>Starter Pack:</strong> Python (with Django/Flask) or Node.js.",
+            roadmap: `<p><strong>Your Next Steps:</strong></p>
+                      <a href="#">1. Learn Python or JavaScript (Node.js)</a><br>
+                      <a href="#">2. Build a simple REST API project</a><br>
+                      <a href="#">3. Understand how to connect to a database</a>`
+        },
+        'ios': {
+            title: "Your Path is iOS Development",
+            description: "You're excited to build apps for the Apple ecosystem. Your journey starts with Apple's modern programming language.",
+            pack: "<strong>Starter Pack:</strong> Swift and Xcode.",
+            roadmap: `<p><strong>Your Next Steps:</strong></p>
+                      <a href="#">1. Learn the Swift programming language</a><br>
+                      <a href="#">2. Get comfortable with the Xcode IDE</a><br>
+                      <a href="#">3. Build a simple utility app (e.g., a calculator)</a>`
+        },
+        'android': {
+            title: "Your Path is Android Development",
+            description: "You want to build apps for the most popular mobile platform in the world. Your journey starts with Google's official language.",
+            pack: "<strong>Starter Pack:</strong> Kotlin and Android Studio.",
+            roadmap: `<p><strong>Your Next Steps:</strong></p>
+                      <a href="#">1. Learn the Kotlin programming language</a><br>
+                      <a href="#">2. Get comfortable with Android Studio</a><br>
+                      <a href="#">3. Build a simple app that uses a list</a>`
+        },
+        'cross-platform': {
+            title: "Your Path is Cross-Platform Development",
+            description: "You want to write code once and run it on both iPhones and Android phones. Your journey starts with a powerful cross-platform framework.",
+            pack: "<strong>Starter Pack:</strong> React Native or Flutter.",
+            roadmap: `<p><strong>Your Next Steps:</strong></p>
+                      <a href="#">1. Choose between Flutter (Dart) or React Native (JavaScript)</a><br>
+                      <a href="#">2. Follow the 'Get Started' guide for your chosen framework</a><br>
+                      <a href="#">3. Build a 'To-Do List' app that works on both platforms</a>`
+        }
+    };
+
+    function hideAllSubsequent(step) {
+        // Hide all step 2 paths
+        Object.values(paths).forEach(id => document.getElementById(id).hidden = true);
+        // Hide the final result
+        document.getElementById('result-container').hidden = true;
     }
-}
 
-function handleChoice(step, choice) {
-    if (step === 1) {
-        // If user chose "apps", jump straight to the direct questions.
-        // Otherwise, show the next analogy.
-        const nextElementId = (choice === 'apps') ? 'step1' : 'interior-analogy';
-        revealAndScroll(nextElementId);
-    }
-
-    if (step === 2) {
-        // After the second analogy, always go to the direct questions.
-        revealAndScroll('step1');
-    }
-
-    if (step === 3) {
-        // Show the correct follow-up question based on their direct choice.
-        if (choice === 'frontend') {
-            revealAndScroll('question-frontend');
-        } else if (choice === 'backend') {
-            revealAndScroll('question-backend');
-        } else if (choice === 'mobile') {
-            revealAndScroll('question-mobile');
+    function revealAndScroll(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.hidden = false;
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }
+    
+    // Handle Step 1 Choice
+    document.querySelectorAll('input[name="interest-base"]').forEach(radio => {
+        radio.addEventListener('change', (event) => {
+            hideAllSubsequent(1); // Hide everything after step 1
+            const choice = event.target.value;
+            const nextElementId = paths[choice];
+            if (nextElementId) {
+                revealAndScroll(nextElementId);
+            }
+        });
+    });
 
-    if (step === 4) {
-        // Based on the final choice, show the result.
-        if (choice === 'uiux') {
-            showResult("Your Path is UI/UX Design", "You love crafting beautiful user experiences. Your journey starts with design tools. Your Starter Pack: <strong>Figma, HTML, and CSS</strong>.");
-        } else if (choice === 'frontend-dev') {
-            showResult("Your Path is Front-End Development", "You love bringing designs to life with code. Your journey starts with the core languages of the web. Your Starter Pack: <strong>HTML, CSS, and JavaScript</strong>.");
-        } else if (choice === 'enterprise') {
-            showResult("Your Path is Enterprise Back-End", "You want to build the robust, secure systems that power big businesses. Your journey starts with powerful, established languages. Your Starter Pack: <strong>Java or C#</strong>.");
-        } else if (choice === 'modern-backend') {
-            showResult("Your Path is Modern Web Back-End", "You want to build fast, flexible APIs and services for modern web apps. Your journey starts with today's most popular web technologies. Your Starter Pack: <strong>Python (with Django) or Node.js</strong>.");
-        } else if (choice === 'ios') {
-            showResult("Your Path is iOS Development", "You're excited to build apps for the Apple ecosystem. Your journey starts with Apple's modern programming language. Your Starter Pack: <strong>Swift and Xcode</strong>.");
-        } else if (choice === 'android') {
-            showResult("Your Path is Android Development", "You want to build apps for the most popular mobile platform in the world. Your journey starts with Google's official language. Your Starter Pack: <strong>Kotlin and Android Studio</strong>.");
-        } else if (choice === 'cross-platform') {
-            showResult("Your Path is Cross-Platform Development", "You want to write code once and have it run on both iPhones and Android phones. Your journey starts with a powerful cross-platform framework. Your Starter Pack: <strong>React Native or Flutter</strong>.");
-        }
-    }
-}
+    // Handle Step 2 Choices (all paths)
+    document.querySelectorAll('input[name^="interest-"]').forEach(radio => {
+        // Exclude the first question from this listener
+        if (radio.name === 'interest-base') return;
 
-function showResult(title, description) {
-    const resultTitle = document.getElementById('result-title');
-    const resultDescription = document.getElementById('result-description');
- 
-    resultTitle.textContent = title;
-    resultDescription.innerHTML = description;
+        radio.addEventListener('change', (event) => {
+            const choice = event.target.value;
+            const resultData = results[choice];
 
-    // Use our new helper function to reveal and scroll to the final result.
-    revealAndScroll('result-container');
-}
+            if (resultData) {
+                document.getElementById('result-title').textContent = resultData.title;
+                document.getElementById('result-description').innerHTML = `<p>${resultData.description}</p><p>${resultData.pack}</p>`;
+                document.getElementById('result-roadmap').innerHTML = resultData.roadmap;
+                revealAndScroll('result-container');
+            }
+        });
+    });
+});

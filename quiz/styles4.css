@@ -138,3 +138,24 @@ body {
        margin-top: 20px; 
        cursor: pointer; 
 }
+
+/* Add this to your existing styles4.css */
+
+.option {
+    display: block; /* Makes the whole area clickable */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+}
+
+.option input[type="radio"] {
+    margin-right: 10px;
+}
+

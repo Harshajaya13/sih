@@ -119,4 +119,3 @@ function showFinalScore() {
 
 // Start the quiz when the script loads
 startQuiz();
-

@@ -159,3 +159,38 @@ body {
     margin-right: 10px;
 }
 
+/* Add these new rules to styles4.css */
+
+.option-btn.correct {
+    background-color: #90EE90; /* Light green */
+    border-color: #38a838;
+}
+
+.option-btn.incorrect {
+    background-color: #F08080; /* Light red */
+    border-color: #c53030;
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Make sure your base button style is defined */
+.option-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: #f0f0f0;
+}

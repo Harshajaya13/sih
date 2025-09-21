@@ -59,13 +59,21 @@ body {
     margin-bottom: 15px; 
 }
 .language-header { 
-    display: flex; justify-content: space-between; cursor: pointer; font-size: 18px; padding: 5px; 
+    display: flex;
+     justify-content: space-between; 
+     cursor: pointer; 
+     font-size: 18px; padding: 5px; 
 }
 .toggle-levels { 
     font-weight: bold;
  }
 .levels-list { 
-    list-style: none; padding-left: 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+    list-style: none; 
+    padding-left: 15px;
+     max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.3s ease;
+    cursor: pointer;
  }
 .levels-list.open { 
     max-height: 500px; /* Adjust as needed */ 
@@ -92,9 +100,19 @@ body {
      max-width: 800px; margin: auto; 
     }
 .question-block { 
-    background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    background: white;
+     border-radius: 8px;
+      padding: 20px; 
+      margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
 }
-.option { padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; cursor: pointer; display: flex; align-items: center; 
+.option {
+     padding: 15px; 
+     border: 1px solid #ddd; 
+     border-radius: 5px; 
+     margin-bottom: 10px; 
+     cursor: pointer; 
+     display: flex;
+      align-items: center; 
 }
 .option:hover { 
     background: #f0f0f0; 
@@ -103,8 +121,20 @@ body {
     margin-right: 15px; 
 }
 .explanation { 
-    margin-top: 15px; padding: 10px; background: #eef; border-left: 4px solid #4a4ac7; 
+    margin-top: 15px; 
+    padding: 10px; 
+    background: #eef; 
+    border-left: 4px solid #4a4ac7; 
 }
 .next-button { 
-    display: block; width: 100%; padding: 15px; font-size: 16px; background: #4a4ac7; color: white; border: none; border-radius: 5px; margin-top: 20px; cursor: pointer; 
+    display: block;
+     width: 100%; 
+     padding: 15px; 
+     font-size: 16px; 
+     background: #4a4ac7;
+      color: white; 
+      border: none;
+       border-radius: 5px; 
+       margin-top: 20px; 
+       cursor: pointer; 
 }

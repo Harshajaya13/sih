@@ -78,6 +78,7 @@ cursor:pointer;
 .options{
   display:flex;
   justify-content: space-between;
+  width:50rem;
 }
 
 .design{

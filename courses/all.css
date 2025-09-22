@@ -74,22 +74,71 @@ p:hover {
     margin-bottom: 1.5rem;
 }
 
-/* The container that controls the video's size and shape */
-.responsive-video-wrapper {
+.video-thumbnail-link {
+    display: inline-block;
     position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* Creates a 16:9 widescreen aspect ratio */
-    height: 0;
+    cursor: pointer;
+    max-width: 600px;
+    border-radius: 10px;
     overflow: hidden;
-    border-radius: 8px; /* Rounds the corners of the video */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-decoration: none;
 }
 
-/* The embedded iframe itself */
-.responsive-video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+.video-thumbnail {
     width: 100%;
-    height: 100%;
-    border: none; /* Removes the default border around the video */
+    height: auto;
+    display: block;
+}
+
+.play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+}
+
+/* --- Simple Video Icon Overlay --- */
+
+.video-container {
+    width: 350px; /* Or any width you prefer */
+   margin: 0 auto;
+}
+
+/* Makes the link the reference for positioning the icon */
+.video-container a {
+    position: relative;
+    display: block; /* Allows the icon to be positioned correctly */
+    border-radius: 12px;
+    overflow: hidden; /* Ensures the corners of the image are rounded */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Styles your image */
+.video-container img {
+    width: 100%;
+    display: block; /* Removes any extra space below the image */
+}
+
+/* This creates the play icon */
+.video-container a::after {
+    content: '▶'; /* The play symbol */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    pointer-events: none; /* Prevents the icon from interfering with the link */
+    transition: color 0.2s;
+}
+
+/* A small hover effect */
+.video-container a:hover::after {
+    color: #fff;
 }

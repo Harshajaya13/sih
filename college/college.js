@@ -1,62 +1,38 @@
-const express = require('express');
-const cors = require('cors');
-const fetch = require('node-fetch');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+document.getElementById('search-button').addEventListener('click', function() {
+    // Get user inputs
+    const city = document.getElementById('city-input').value;
+    const street = document.getElementById('street-input').value;
+    const userPrompt = document.getElementById('user-prompt').value;
 
-const app = express();
-const port = 3000;
+    // --- Show the results container and loading spinner ---
+    const resultsContainer = document.getElementById('results-container');
+    resultsContainer.style.display = 'block';
 
-// --- STEP 1: PASTE YOUR SECRET API KEYS HERE ---
-const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY';
-const MAPMYINDIA_API_KEY = 'YOUR_MAPMYINDIA_API_KEY';
+    const loadingSpinner = document.getElementById('loading-spinner');
+    loadingSpinner.style.display = 'block';
 
-const geminiAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+    const responseArea = document.getElementById('response-area');
+    responseArea.innerHTML = ''; // Clear previous results
 
-app.use(cors());
-app.use(express.json());
-
-app.post('/find-map-gemini', async (req, res) => {
-    const { prompt } = req.body;
-    if (!prompt) {
-        return res.status(400).json({ error: 'Prompt is required' });
+    // --- Update the map without an API key ---
+    const mapFrame = document.getElementById('map-iframe');
+    
+    // Construct a location query
+    let locationQuery = city;
+    if (street) {
+        locationQuery = street + ', ' + city;
     }
+    
+    // Combine the user's prompt and the location for the map search
+    const fullQuery = userPrompt + ' in ' + locationQuery;
 
-    try {
-        // --- Use Gemini to convert the prompt to structured JSON ---
-        const model = geminiAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
-        const instruction = `From the user's request, extract the main search query and the location. Respond ONLY with a valid JSON object: {"query": "search term", "location": "city name"}`;
-        const result = await model.generateContent(`${instruction}\n\nUser Prompt: "${prompt}"`);
-        const jsonString = result.response.text().match(/\{.*\}/s)[0];
-        const searchParams = JSON.parse(jsonString);
+    // Update the iframe source with a URL that doesn't require an API key
+    mapFrame.src = `https://maps.google.com/maps?q=${encodeURIComponent(fullQuery)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
-        // --- Use MapmyIndia to geocode and create the map ---
-        const geocodeQuery = encodeURIComponent(`${searchParams.query}, ${searchParams.location}`);
-        const geocodeUrl = `https://atlas.mapmyindia.com/api/places/geocode?address=${geocodeQuery}&itemCount=1`;
-
-        const geocodeResponse = await fetch(geocodeUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${MAPMYINDIA_API_KEY}`
-            }
-        });
-        const geocodeData = await geocodeResponse.json();
-
-        if (!geocodeData.copResults || geocodeData.copResults.length === 0) {
-            return res.status(404).json({ error: 'Location not found by MapmyIndia.' });
-        }
-
-        const location = geocodeData.copResults[0];
-        const mapIframe = `<iframe width="100%" height="500" frameborder="0" src="https://maps.mapmyindia.com/embed?center=${location.latitude},${location.longitude}&zoom=14&marker=${location.latitude},${location.longitude}" style="border:1px solid #ccc; border-radius: 8px;"></iframe>`;
-        
-        res.json({ mapIframe: mapIframe });
-
-    } catch (error) {
-        console.error("Error:", error);
-        res.status(500).json({ error: 'Failed to process your request. Check API keys and server logs.' });
-    }
+    // --- Simulate fetching AI results ---
+    setTimeout(() => {
+        loadingSpinner.style.display = 'none';
+        responseArea.innerHTML = `<p>Showing results for "${userPrompt}" near ${locationQuery}. The map above has been updated.</p>`;
+    }, 2000); // Simulate a 2-second network request
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
